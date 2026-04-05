@@ -1,0 +1,1106 @@
+/* ============================================================
+   BebéSuave v2 — Landing Page Profesional
+   Mobile-First | Bootstrap 5 | WCAG AA | Gestalt | Nielsen
+   ============================================================
+
+   PSICOLOGÍA DEL COLOR (justificación de cada tono):
+   ─────────────────────────────────────────────────
+   --blue   (#4A90D9) → Confianza, seguridad, calma.
+                        Ideal para el "botón principal" porque
+                        da certeza a la decisión de compra.
+
+   --coral  (#FF6B6B) → Calidez, amor, urgencia suave.
+                        Usado en el producto "más vendido" para
+                        guiar la atención sin presionar.
+
+   --green  (#52C48A) → Salud, naturaleza, seguridad.
+                        Reservado para iconos de "disponible" y
+                        beneficios relacionados con el cuidado.
+
+   --purple (#9B8EC4) → Creatividad, gentileza, premium.
+                        Acento para el 4.° beneficio (eco).
+
+   --whatsapp (#25D366) → Color de marca universal; el usuario
+                           ya lo reconoce sin leer el texto.
+
+   --dark-bg (#1A2F4E) → Fondo oscuro en estadísticas y contacto:
+                          crea contraste que da "peso" y seriedad.
+   ============================================================ */
+
+/* ---- Google Font: Nunito ---- */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap');
+
+/* ---- Custom Properties ---- */
+:root {
+  color-scheme: only light;
+
+  /* Paleta de color */
+  --c-blue:        #4A90D9;
+  --c-blue-d:      #357ABD;
+  --c-coral:       #FF6B6B;
+  --c-coral-d:     #E85555;
+  --c-green:       #52C48A;
+  --c-green-d:     #3DA872;
+  --c-purple:      #9B8EC4;
+  --c-whatsapp:    #25D366;
+  --c-whatsapp-d:  #1aab52;
+
+  /* Neutros */
+  --c-bg:          #FAFBFF;
+  --c-white:       #FFFFFF;
+  --c-text:        #1C2B4B;
+  --c-muted:       #6B7A99;
+  --c-border:      #E2EAF4;
+
+  /* Secciones alternadas */
+  --c-section-alt: #F0F5FF;
+  --c-dark-bg:     #1A2F4E;
+  --c-dark-bg-2:   #0F1F35;
+
+  /* Tipografía */
+  --font:          'Nunito', 'Segoe UI', Arial, sans-serif;
+  --fs-base:       16px;
+  --lh:            1.65;
+
+  /* Espaciado / forma */
+  --radius:        14px;
+  --radius-sm:     8px;
+  --radius-pill:   999px;
+
+  /* Sombras */
+  --shadow:        0 2px 16px rgba(44, 87, 145, 0.10);
+  --shadow-md:     0 6px 28px rgba(44, 87, 145, 0.16);
+  --shadow-lg:     0 12px 40px rgba(44, 87, 145, 0.22);
+
+  /* Transiciones */
+  --t:             0.22s ease;
+
+  /* Fitts */
+  --touch:         44px;
+  --max-w:         1200px;
+}
+
+/* ---- Reset ---- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  font-size: var(--fs-base);
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font);
+  font-size: 1rem;
+  line-height: var(--lh);
+  color: var(--c-text);
+  background: var(--c-bg);
+}
+
+img  { display: block; max-width: 100%; height: auto; }
+ul   { list-style: none; }
+a    { color: inherit; text-decoration: none; }
+
+/* Foco visible (teclado / accesibilidad) */
+:focus-visible {
+  outline: 3px solid var(--c-blue);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ============================================================
+   UTILIDADES GLOBALES
+   ============================================================ */
+
+.section-label {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--c-blue);
+  background: rgba(74,144,217,0.10);
+  padding: 0.3rem 0.9rem;
+  border-radius: var(--radius-pill);
+}
+
+.section-label--light { color: #9FC9F5; background: rgba(255,255,255,0.12); }
+
+.section-title {
+  font-size: clamp(1.5rem, 4vw, 2.2rem);
+  font-weight: 800;
+  color: var(--c-text);
+  line-height: 1.25;
+}
+
+.section-title--light { color: #FFFFFF; }
+
+.section-desc {
+  color: var(--c-muted);
+  font-size: 1rem;
+  max-width: 520px;
+  margin-inline: auto;
+}
+
+/* ============================================================
+   BOTONES — Consistencia: Nielsen #4
+   Un color = un propósito, siempre el mismo en toda la página
+   ============================================================ */
+.btn-primary-custom {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--touch);
+  padding: 0.75rem 1.75rem;
+  background: var(--c-blue);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius);
+  font-family: var(--font);
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background var(--t), transform var(--t), box-shadow var(--t);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.btn-primary-custom:hover {
+  background: var(--c-blue-d);
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-primary-custom:active { transform: translateY(0); }
+
+.btn-coral {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--touch);
+  padding: 0.75rem 1.75rem;
+  background: var(--c-coral);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius);
+  font-family: var(--font);
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background var(--t), transform var(--t), box-shadow var(--t);
+  text-decoration: none;
+}
+
+.btn-coral:hover {
+  background: var(--c-coral-d);
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255,107,107,0.35);
+}
+
+.btn-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--touch);
+  padding: 0.75rem 1.75rem;
+  background: var(--c-whatsapp);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius);
+  font-family: var(--font);
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background var(--t), transform var(--t), box-shadow var(--t);
+  text-decoration: none;
+}
+
+.btn-whatsapp:hover {
+  background: var(--c-whatsapp-d);
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(37,211,102,0.40);
+}
+
+.btn-disabled {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--touch);
+  padding: 0.75rem 1.75rem;
+  background: #D0D8E8;
+  color: #8A9ABB;
+  border: none;
+  border-radius: var(--radius);
+  font-family: var(--font);
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: not-allowed;
+}
+
+/* ============================================================
+   BARRA DE PROGRESO DE SCROLL
+   Nielsen #1 — Visibilidad del estado
+   ============================================================ */
+.scroll-progress {
+  position: fixed;
+  top: 0; left: 0;
+  height: 4px;
+  width: 0%;
+  background: linear-gradient(90deg, var(--c-blue), var(--c-coral));
+  z-index: 9999;
+  transition: width 0.1s linear;
+}
+
+/* ============================================================
+   CABECERA — glassmorphism sutil
+   Nielsen #4 Consistencia; #6 Reconocimiento
+   ============================================================ */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 500;
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--c-border);
+  transition: box-shadow var(--t);
+}
+
+.site-header.scrolled {
+  box-shadow: var(--shadow);
+}
+
+/* Logo */
+.brand-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 1.35rem;
+  font-weight: 900;
+  color: var(--c-blue);
+  min-height: var(--touch);
+  text-decoration: none;
+}
+
+.brand-logo__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: linear-gradient(135deg, var(--c-blue), var(--c-coral));
+  color: #fff;
+  border-radius: 10px;
+  font-size: 1rem;
+}
+
+/* Nav links escritorio */
+.nav-link-item {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--touch);
+  padding: 0 0.85rem;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--c-muted);
+  transition: color var(--t), background var(--t);
+}
+
+.nav-link-item:hover,
+.nav-link-item.active {
+  color: var(--c-blue);
+  background: rgba(74,144,217,0.09);
+}
+
+/* Hamburguesa */
+.hamburger-btn {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  justify-content: center;
+  width: var(--touch);
+  height: var(--touch);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: var(--radius-sm);
+}
+
+.hamburger-bar {
+  display: block;
+  height: 2px;
+  background: var(--c-text);
+  border-radius: 2px;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.hamburger-btn[aria-expanded="true"] .hamburger-bar:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.hamburger-btn[aria-expanded="true"] .hamburger-bar:nth-child(2) {
+  opacity: 0; transform: scaleX(0);
+}
+.hamburger-btn[aria-expanded="true"] .hamburger-bar:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Menú móvil */
+.mobile-menu {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease;
+  background: var(--c-white);
+  border-top: 1px solid var(--c-border);
+}
+
+.mobile-menu.open { max-height: 400px; }
+
+.mobile-nav-link {
+  display: block;
+  padding: 0.75rem 0.5rem;
+  font-weight: 600;
+  color: var(--c-muted);
+  border-bottom: 1px solid var(--c-border);
+  transition: color var(--t);
+}
+
+.mobile-nav-link:hover { color: var(--c-blue); }
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero-section {
+  background: linear-gradient(135deg, #EBF4FF 0%, #F5F0FF 50%, #FFF0F5 100%);
+  position: relative;
+  overflow: hidden;
+  padding: 3.5rem 0;
+}
+
+/* Blobs decorativos (guían el ojo hacia el centro) */
+.hero-blob {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero-blob--1 {
+  width: 500px; height: 500px;
+  top: -150px; right: -100px;
+  background: radial-gradient(circle, rgba(74,144,217,0.13) 0%, transparent 70%);
+}
+
+.hero-blob--2 {
+  width: 400px; height: 400px;
+  bottom: -100px; left: -100px;
+  background: radial-gradient(circle, rgba(255,107,107,0.10) 0%, transparent 70%);
+}
+
+.hero-section .container { position: relative; z-index: 1; }
+
+/* Badge de prueba social */
+.badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: rgba(74,144,217,0.10);
+  color: var(--c-blue);
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 0.45rem 1rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(74,144,217,0.20);
+}
+
+.hero-title {
+  font-size: clamp(2rem, 5vw, 3.25rem);
+  font-weight: 900;
+  line-height: 1.15;
+  color: var(--c-text);
+}
+
+.hero-title__accent {
+  background: linear-gradient(90deg, var(--c-blue), var(--c-coral));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-subtitle {
+  font-size: clamp(1rem, 2vw, 1.15rem);
+  color: var(--c-muted);
+  max-width: 500px;
+}
+
+/* Trust items bajo CTA */
+.trust-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--c-muted);
+}
+
+.trust-item i { color: var(--c-blue); }
+
+/* Visual circular */
+.hero-visual {
+  position: relative;
+  width: 300px;
+  height: 300px;
+}
+
+.hero-visual__circle {
+  width: 280px;
+  height: 280px;
+  background: var(--c-white);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-lg);
+  font-size: 6rem;
+  position: relative;
+}
+
+/* Badges flotantes sobre la imagen */
+.float-badge {
+  position: absolute;
+  background: var(--c-white);
+  border-radius: var(--radius);
+  padding: 0.5rem 0.9rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--c-text);
+  box-shadow: var(--shadow-md);
+  white-space: nowrap;
+  animation: floatY 3s ease-in-out infinite alternate;
+}
+
+.float-badge--top  { top: -10px; right: -20px; }
+.float-badge--bottom { bottom: 10px; left: -30px; animation-delay: 1.5s; }
+
+@keyframes floatY {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-8px); }
+}
+
+/* ============================================================
+   BENEFICIOS
+   ============================================================ */
+.benefits-section { background: var(--c-white); }
+
+.benefit-card {
+  border-radius: var(--radius);
+  padding: 2rem 1.5rem;
+  text-align: center;
+  border: 2px solid transparent;
+  transition: transform var(--t), box-shadow var(--t), border-color var(--t);
+}
+
+.benefit-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Colores por tarjeta (psicología diferenciada) */
+.benefit-card--blue   { background: #EBF4FF; }
+.benefit-card--blue:hover   { border-color: rgba(74,144,217,0.3); }
+
+.benefit-card--green  { background: #EAFAF3; }
+.benefit-card--green:hover  { border-color: rgba(82,196,138,0.3); }
+
+.benefit-card--coral  { background: #FFF0F0; }
+.benefit-card--coral:hover  { border-color: rgba(255,107,107,0.3); }
+
+.benefit-card--purple { background: #F3F0FF; }
+.benefit-card--purple:hover { border-color: rgba(155,142,196,0.3); }
+
+.benefit-card__icon-wrap {
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.benefit-card--blue   .benefit-card__icon-wrap { color: var(--c-blue); }
+.benefit-card--green  .benefit-card__icon-wrap { color: var(--c-green); }
+.benefit-card--coral  .benefit-card__icon-wrap { color: var(--c-coral); }
+.benefit-card--purple .benefit-card__icon-wrap { color: var(--c-purple); }
+
+.benefit-card__title {
+  font-size: 1.05rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+  color: var(--c-text);
+}
+
+.benefit-card__desc {
+  font-size: 0.9rem;
+  color: var(--c-muted);
+  line-height: 1.5;
+}
+
+/* ============================================================
+   CATÁLOGO DE PRODUCTOS
+   ============================================================ */
+.catalog-section { background: var(--c-section-alt); }
+
+/* Filtros de talla */
+.size-btn {
+  min-height: 40px;
+  padding: 0.45rem 1.1rem;
+  border-radius: var(--radius-pill);
+  border: 2px solid var(--c-blue);
+  background: transparent;
+  color: var(--c-blue);
+  font-family: var(--font);
+  font-size: 0.88rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background var(--t), color var(--t), transform var(--t);
+}
+
+.size-btn:hover { background: rgba(74,144,217,0.10); }
+
+.size-btn--active {
+  background: var(--c-blue);
+  color: #fff;
+}
+
+.size-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 4px;
+  border-radius: var(--radius-pill);
+  font-size: 0.7rem;
+  font-weight: 700;
+  background: rgba(255,255,255,0.3);
+  color: inherit;
+  margin-left: 4px;
+}
+
+/* Tarjeta de producto */
+.product-card {
+  background: var(--c-white);
+  border-radius: var(--radius);
+  padding: 1.5rem 1.25rem;
+  position: relative;
+  border: 2px solid transparent;
+  box-shadow: var(--shadow);
+  transition: transform var(--t), box-shadow var(--t), border-color var(--t),
+              opacity 0.35s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--c-blue);
+}
+
+/* Variante destacada (más vendido) */
+.product-card--featured {
+  border-color: var(--c-coral);
+  box-shadow: 0 4px 24px rgba(255,107,107,0.18);
+}
+
+.product-card--featured:hover { border-color: var(--c-coral-d); }
+
+/* Variante agotado */
+.product-card--out { opacity: 0.7; }
+.product-card--out:hover { transform: none; border-color: transparent; box-shadow: var(--shadow); }
+
+/* Badge */
+.product-card__badge {
+  position: absolute;
+  top: -12px;
+  left: 1.25rem;
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-pill);
+}
+
+.product-card__badge--new     { background: var(--c-blue);  color: #fff; }
+.product-card__badge--popular { background: var(--c-coral); color: #fff; }
+
+/* Imagen placeholder */
+.product-card__img {
+  position: relative;
+  text-align: center;
+  padding: 1rem 0;
+  margin-bottom: 0.75rem;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
+.product-card__img-bg {
+  position: absolute;
+  inset: 0;
+  background: #EBF4FF;
+  border-radius: var(--radius-sm);
+  z-index: 0;
+}
+
+.product-card__img-bg--green  { background: #EAFAF3; }
+.product-card__img-bg--coral  { background: #FFF0F0; }
+.product-card__img-bg--purple { background: #F3F0FF; }
+
+.product-card__emoji {
+  position: relative;
+  z-index: 1;
+  font-size: 3.5rem;
+  display: block;
+}
+
+.product-card__emoji--out { filter: grayscale(1); }
+
+/* Cuerpo */
+.product-card__body { flex: 1; }
+
+.product-card__name {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--c-text);
+}
+
+.product-card__name--out { color: var(--c-muted); }
+
+.product-card__weight {
+  font-size: 0.82rem;
+  color: var(--c-muted);
+  margin-top: 0.25rem;
+}
+
+.product-card__price {
+  font-size: 1.7rem;
+  font-weight: 900;
+  color: var(--c-blue);
+  line-height: 1;
+}
+
+.product-card__price--out { color: var(--c-muted); }
+
+/* Stock badges */
+.stock-badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-pill);
+}
+
+.stock-badge--ok {
+  background: rgba(82,196,138,0.12);
+  color: var(--c-green-d);
+}
+
+.stock-badge--out {
+  background: rgba(107,122,153,0.12);
+  color: var(--c-muted);
+}
+
+/* Mensaje de producto agotado (Nielsen #2 — lenguaje natural) */
+.out-message {
+  font-size: 0.82rem;
+  color: var(--c-muted);
+  background: rgba(107,122,153,0.08);
+  padding: 0.4rem 0.75rem;
+  border-radius: var(--radius-sm);
+}
+
+/* Entrada escalonada de cards (stagger) */
+.product-card--entry {
+  opacity: 0;
+  transform: translateY(18px);
+}
+
+.product-card--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Ocultar cards filtradas */
+[data-size][hidden] { display: none !important; }
+
+/* ============================================================
+   ESTADÍSTICAS
+   Psicología: fondo oscuro + números grandes = credibilidad
+   ============================================================ */
+.stats-section {
+  background: linear-gradient(135deg, var(--c-dark-bg) 0%, var(--c-dark-bg-2) 100%);
+}
+
+.stat-card {
+  padding: 1.5rem 1rem;
+}
+
+.stat-card__number {
+  font-size: clamp(2.5rem, 6vw, 3.5rem);
+  font-weight: 900;
+  color: #FFFFFF;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.stat-card__label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.55);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* ============================================================
+   TESTIMONIOS
+   ============================================================ */
+.testimonials-section { background: var(--c-white); }
+
+.testimonial-card {
+  background: var(--c-section-alt);
+  border-radius: var(--radius);
+  padding: 1.75rem 1.5rem;
+  border-left: 4px solid var(--c-blue);
+  transition: transform var(--t), box-shadow var(--t);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Card destacada (del medio) */
+.testimonial-card--featured {
+  background: #EBF4FF;
+  border-left-color: var(--c-coral);
+}
+
+.testimonial-card__stars {
+  color: #F5A623;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  letter-spacing: 2px;
+}
+
+.testimonial-card__quote {
+  flex: 1;
+}
+
+.testimonial-card__quote p {
+  font-style: italic;
+  color: var(--c-text);
+  margin-bottom: 1.25rem;
+  line-height: 1.6;
+}
+
+.testimonial-card__author {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-style: normal;
+}
+
+.testimonial-card__avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--c-blue);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.testimonial-card__avatar--coral  { background: var(--c-coral); }
+.testimonial-card__avatar--green  { background: var(--c-green); }
+
+.testimonial-card__name {
+  font-weight: 800;
+  font-style: normal;
+  font-size: 0.95rem;
+  color: var(--c-text);
+  display: block;
+}
+
+.testimonial-card__detail {
+  font-size: 0.8rem;
+  color: var(--c-muted);
+  margin: 0;
+}
+
+/* ============================================================
+   CONTACTO
+   Psicología: fondo oscuro = gravedad, urgencia, importancia
+   ============================================================ */
+.contact-section {
+  background: linear-gradient(135deg, var(--c-dark-bg) 0%, var(--c-dark-bg-2) 100%);
+}
+
+.contact-desc {
+  color: rgba(255,255,255,0.75);
+  max-width: 400px;
+}
+
+.contact-hours {
+  color: rgba(255,255,255,0.65);
+  font-size: 0.9rem;
+}
+
+.contact-hours strong { color: rgba(255,255,255,0.9); }
+
+/* Formulario */
+.contact-form {
+  background: var(--c-white);
+  border-radius: var(--radius);
+  padding: 2rem;
+  box-shadow: var(--shadow-lg);
+}
+
+.contact-form__title {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--c-text);
+}
+
+.contact-form__subtitle {
+  font-size: 0.9rem;
+  color: var(--c-muted);
+  margin-top: 0.25rem;
+}
+
+/* Campos */
+.form-field { display: flex; flex-direction: column; gap: 0.35rem; }
+
+.form-field__label {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--c-text);
+}
+
+.required { color: var(--c-coral); }
+.optional  { color: var(--c-muted); font-weight: 400; }
+
+.form-field__input {
+  min-height: var(--touch);
+  padding: 0.65rem 1rem;
+  border: 2px solid var(--c-border);
+  border-radius: var(--radius-sm);
+  font-size: 1rem;
+  font-family: var(--font);
+  color: var(--c-text);
+  background: var(--c-white);
+  transition: border-color var(--t), box-shadow var(--t);
+  width: 100%;
+  appearance: auto;
+}
+
+.form-field__input:focus {
+  border-color: var(--c-blue);
+  box-shadow: 0 0 0 3px rgba(74,144,217,0.15);
+  outline: none;
+}
+
+.form-field__input.is-valid   { border-color: var(--c-green); }
+.form-field__input.is-invalid { border-color: var(--c-coral); }
+
+.form-field__textarea { min-height: auto; resize: vertical; }
+
+/* Mensaje de error (Nielsen #9: Ayuda a usuarios a reconocer errores) */
+.field-error {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  color: var(--c-coral);
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-top: 0.2rem;
+}
+
+/* Nota de privacidad */
+.privacy-note {
+  font-size: 0.8rem;
+  color: var(--c-muted);
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.site-footer {
+  background: #0A1829;
+  color: rgba(255,255,255,0.5);
+}
+
+.footer-copy { font-size: 0.82rem; }
+
+.footer-social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--touch);
+  height: var(--touch);
+  border-radius: 50%;
+  font-size: 1.2rem;
+  color: rgba(255,255,255,0.55);
+  transition: color var(--t), background var(--t);
+}
+
+.footer-social-link:hover {
+  color: #fff;
+  background: rgba(255,255,255,0.1);
+}
+
+.footer-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--touch);
+  padding: 0 0.75rem;
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.5);
+  transition: color var(--t);
+}
+
+.footer-link:hover { color: #fff; }
+
+/* ============================================================
+   FAB WHATSAPP
+   Ley de Fitts: posición fija + área generosa
+   ============================================================ */
+.fab-whatsapp {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 400;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--c-whatsapp);
+  color: #fff;
+  border-radius: var(--radius-pill);
+  padding: 0.8rem 1.3rem 0.8rem 1.1rem;
+  font-family: var(--font);
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 4px 20px rgba(37,211,102,0.40);
+  transition: transform var(--t), box-shadow var(--t);
+  min-height: var(--touch);
+}
+
+.fab-whatsapp i { font-size: 1.3rem; }
+
+.fab-whatsapp:hover {
+  color: #fff;
+  transform: translateY(-3px) scale(1.04);
+  box-shadow: 0 8px 32px rgba(37,211,102,0.55);
+}
+
+.fab-label { white-space: nowrap; }
+
+@media (max-width: 360px) {
+  .fab-label { display: none; }
+  .fab-whatsapp { padding: 0.9rem; border-radius: 50%; }
+}
+
+/* ============================================================
+   TOAST NOTIFICATIONS
+   Nielsen #1 — Feedback sin bloquear la UI
+   ============================================================ */
+.toast-container {
+  position: fixed;
+  bottom: 5.5rem;
+  right: 1.5rem;
+  z-index: 450;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  pointer-events: none;
+}
+
+.toast-msg {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: var(--c-text);
+  color: #fff;
+  padding: 0.8rem 1.1rem;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-family: var(--font);
+  font-weight: 600;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.22);
+  max-width: 300px;
+  pointer-events: auto;
+  animation: toastSlideIn 0.3s ease forwards;
+}
+
+.toast-msg--success { border-left: 4px solid var(--c-green); }
+.toast-msg--error   { border-left: 4px solid var(--c-coral); }
+.toast-msg--info    { border-left: 4px solid var(--c-blue);  }
+
+@keyframes toastSlideIn {
+  from { opacity: 0; transform: translateX(16px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes toastSlideOut {
+  from { opacity: 1; transform: translateX(0); }
+  to   { opacity: 0; transform: translateX(16px); }
+}
+
+/* ============================================================
+   REVEAL POR SCROLL (IntersectionObserver)
+   ============================================================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+
+.reveal--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============================================================
+   ACCESIBILIDAD — Movimiento reducido
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; animation: none !important; }
+  html { scroll-behavior: auto; }
+  .float-badge { animation: none; }
+}
+
+/* Modo oscuro desactivado — siempre tema claro */
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (min-width: 992px) {
+  .hero-section { padding: 5rem 0; }
+  .hero-visual { width: 360px; height: 360px; }
+  .hero-visual__circle { width: 340px; height: 340px; }
+}
+
+/* Scroll spy activo */
+.nav-link-item.active {
+  color: var(--c-blue);
+  background: rgba(74,144,217,0.09);
+}
